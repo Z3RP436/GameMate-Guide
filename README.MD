@@ -1,65 +1,68 @@
-# GameMate - Dein Discord Shared Event Bot
+# GameMate - Discord Shared Event Guide
 
-GameMate ist ein Discord-Bot, der speziell dafür entwickelt wurde, Events über mehrere Server hinweg zu koordinieren. Mit einer Architektur aus einem **Main-Server** (Zentrale) und mehreren **Sub-Servern** (Partner-Servern) ermöglicht er eine nahtlose Organisation von Gaming-Sessions und Community-Events.
-
-## 🚀 Den Bot hinzufügen & Einrichten
-
-Um GameMate zu nutzen, muss der Bot auf den beteiligten Servern vorhanden sein.
-
-### 1. Main-Server festlegen (Zentraler Server)
-Der Main-Server ist der Ort, an dem Events erstellt und verwaltet werden.
-*   Füge den Bot deinem Server hinzu.
-*   Nutze den Befehl `/main-guild set`, um diesen Server als Hauptserver zu registrieren.
-*   Nur Administratoren können diesen Befehl ausführen.
-
-### 2. Sub-Server verbinden (Partner-Server)
-Sub-Server sind Server, auf denen die Events des Main-Servers veröffentlicht werden.
-*   **Token generieren:** Auf dem **Main-Server** muss ein Admin mit `/token-generation` einen Einladungstoken erstellen.
-    *   `usage-count`: Wie viele Server diesen Token nutzen können.
-    *   `expiration-date`: Wie lange der Token gültig ist.
-*   **Setup auf dem Sub-Server:** Auf dem Partner-Server nutzt ein Admin den Befehl `/setup`:
-    *   `token`: Der auf dem Main-Server generierte Token.
-    *   `creator-role`: Eine Rolle auf dem Sub-Server, deren Mitglieder ebenfalls Events erstellen dürfen (optional, falls Berechtigung gewünscht).
-    *   `events-channel`: Der Kanal, in dem die Event-Ankündigungen erscheinen sollen.
-    *   `language`: Die Sprache für diesen Server (z.B. `de`).
+GameMate ermöglicht die serverübergreifende Koordination von Events. Diese Anleitung richtet sich an **Sub-Server Administratoren**, **Event-Ersteller** und **Spieler**.
 
 ---
 
-## 🎮 Was man als Spieler machen kann
+## 🛠️ Für Sub-Server Administratoren
 
-Als Mitglied auf einem der verbundenen Server stehen dir folgende Funktionen zur Verfügung:
+Um deinen Server mit dem Netzwerk zu verbinden und Events vom Main-Server zu empfangen, folge diesen Schritten:
 
-*   **Events beitreten:** Klicke einfach auf das ✅ unter einer Event-Ankündigung.
-*   **Automatische Kanäle:** Sobald du einem Event beitrittst, erhältst du Zugriff auf die entsprechenden Event-Kanäle (Text & Voice), sofern diese für das Event konfiguriert wurden.
-*   **Warteliste:** Wenn ein Event voll ist, wirst du automatisch auf die Warteliste gesetzt und rückst nach, falls jemand absagt.
-*   **Benachrichtigungen:** Du erhältst automatische Erinnerungen kurz vor Start des Events.
-*   **Feedback:** Nach dem Event kannst du Feedback geben (sofern aktiviert), um dein Erlebnis zu bewerten.
+### Den Server einrichten
+Nutze den Befehl `/setup`, um die Grundkonfiguration vorzunehmen. Du benötigst hierfür einen **Registrierungs-Token**, den du von einem Administrator des Main-Servers erhältst.
 
----
-
-## 🛠️ Was man als Admin machen kann
-
-Admins (oder Nutzer mit der konfigurierten Creator-Rolle) haben volle Kontrolle über die Events:
-
-*   **Event-Management:** Über `/shared-event` können Events erstellt, bearbeitet, gelöscht oder aufgelistet werden.
-*   **Server-Verknüpfung:** Verwaltung der Token-Generierung und der Server-Hierarchie.
-*   **Status-Kontrolle:** Events manuell starten (`/shared-event start`) oder stoppen (`/shared-event stop`).
-*   **Übersicht:** Mit `/shared-event list` behältst du den Überblick über alle geplanten Aktivitäten.
+**Befehl:** `/setup`
+**Parameter:**
+*   `token` (Pflicht): Der Registrierungs-Token des Main-Servers.
+*   `events-channel` (Pflicht): Der Kanal, in dem alle neuen Shared Events automatisch angekündigt werden.
+*   `creator-role` (Pflicht): Die Rolle auf deinem Server, die berechtigt ist, Shared Events zu verwalten (neben Administratoren).
+*   `language` (Optional): Die bevorzugte Sprache für Bot-Antworten auf diesem Server (z. B. `de` für Deutsch).
 
 ---
 
-## 🔄 Workflow: Ein neues Shared Event erstellen
+## 📝 Für Event-Ersteller
 
-Hier ist der Schritt-für-Schritt Prozess, wie ein Event über alle Server verteilt wird:
+Nutzer mit Administrator-Rechten oder der konfigurierten `creator-role` können Shared Events verwalten.
 
-1.  **Erstellung:** Ein Admin auf dem **Main-Server** nutzt den Befehl `/shared-event create`.
-    *   Gib Name, Beschreibung, Datum (`TT.MM.JJJJ`), Uhrzeit (`HH:mm`) und optional ein Mitgliedslimit oder das Spiel an.
-2.  **Veröffentlichung:** Sobald das Event erstellt wurde, sendet der Bot automatisch eine Ankündigung in die konfigurierten `events-channel` aller verbundenen **Sub-Server**.
-3.  **Synchronisierung:** Alle Informationen (Teilnehmerliste, Details) werden in Echtzeit über alle Server hinweg synchron gehalten. Wenn jemand auf Server A beitritt, wird die Teilnehmerzahl auch auf Server B aktualisiert.
-4.  **Erinnerung:** Kurz vor dem Startzeitpunkt sendet der Bot Erinnerungen an alle angemeldeten Teilnehmer.
-5.  **Start:** Zum geplanten Zeitpunkt (oder manuell via `/shared-event start`) wird das Event als "Aktiv" markiert. Die Teilnehmer werden informiert und können direkt in die Kanäle springen.
-6.  **Abschluss:** Nach Ende des Events wird es archiviert und die temporären Berechtigungen für Kanäle werden wieder entfernt.
+### Shared Event Befehle
+Alle Event-Aktionen werden über den Hauptbefehl `/shared-event` gesteuert:
+
+*   **`/shared-event create`**: Erstellt ein neues Event, das auf allen verbundenen Servern veröffentlicht wird.
+    *   `name`: Titel des Events.
+    *   `description`: Kurze Beschreibung.
+    *   `date`: Datum im Format `TT.MM.JJJJ`.
+    *   `time`: Uhrzeit im Format `HH:mm`.
+    *   `member_limit` (Optional): Maximale Teilnehmeranzahl.
+    *   `game` (Optional): Das Spiel, das gespielt wird.
+*   **`/shared-event edit`**: Bearbeitet ein bestehendes Event (nur für den Besitzer).
+    *   `id`: Die ID des Events.
+    *   Optionale Felder: `name`, `description`, `date`, `time`, `member_limit`, `game`.
+*   **`/shared-event remove`**: Löscht ein Event (ID erforderlich).
+*   **`/shared-event list`**: Zeigt eine Übersicht aller aktuell geplanten Shared Events.
+*   **`/shared-event info`**: Zeigt detaillierte Informationen zu einem spezifischen Event (ID erforderlich).
+*   **`/shared-event start`**: Startet das Event manuell (nur Besitzer).
+*   **`/shared-event stop`**: Beendet das Event manuell (nur Besitzer).
 
 ---
 
-Viel Spaß beim Organisieren deiner nächsten Gaming-Session mit **GameMate**! 🚀
+## 🎮 Für Spieler
+
+Als Spieler kannst du einfach an Events teilnehmen, egal auf welchem Server sie ursprünglich erstellt wurden.
+
+*   **Beitreten:** Klicke auf das ✅-Emoji unter einer Event-Ankündigung.
+*   **Warteliste:** Sollte ein Event voll sein, wirst du automatisch auf die Warteliste gesetzt. Du rückst nach, sobald ein Platz frei wird.
+*   **Kanäle:** Sobald du einem Event beigetreten bist, erhältst du Zugriff auf die entsprechenden Event-Kanäle (Text/Voice), sofern diese eingerichtet wurden.
+*   **Erinnerungen:** Der Bot sendet dir kurz vor Start des Events eine Benachrichtigung.
+
+---
+
+## 🔄 Workflow: So funktioniert ein Shared Event
+
+1.  **Erstellung:** Ein Ersteller nutzt `/shared-event create` auf einem beliebigen Server (meist Main-Server).
+2.  **Verteilung:** Der Bot sendet die Ankündigung sofort in die `events-channel` aller registrierten Sub-Server.
+3.  **Anmeldung:** Spieler auf allen Servern können via Reaktion (✅) teilnehmen. Die Teilnehmerliste wird global synchronisiert.
+4.  **Vorbereitung:** Kurz vor dem Termin erhalten alle Teilnehmer eine Erinnerung.
+5.  **Durchführung:** Zum Startzeitpunkt wird das Event aktiv. Teilnehmer nutzen die bereitgestellten Kanäle.
+6.  **Abschluss:** Das Event wird beendet, Kanäle werden für die Teilnehmer wieder ausgeblendet.
+
+🚀 Viel Erfolg bei deinem nächsten Event!

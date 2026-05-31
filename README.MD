@@ -9,7 +9,7 @@ GameMate ermöglicht die serverübergreifende Koordination von Events. Diese Anl
 Um deinen Server mit dem Netzwerk zu verbinden und Events vom Main-Server zu empfangen, folge diesen Schritten:
 
 ### Den Server einrichten
-Nutze den Befehl `/setup`, um die Grundkonfiguration vorzunehmen. Du benötigst hierfür einen **Registrierungs-Token**, den du von einem Administrator des Main-Servers erhältst.
+Nutze den Befehl `/setup`, um die Grundkonfiguration vorzunehmen oder bestehende Einstellungen zu aktualisieren. Du benötigst hierfür einen **Registrierungs-Token**, den du von einem Administrator des Main-Servers erhältst.
 
 **Befehl:** `/setup`
 **Parameter:**
@@ -17,6 +17,17 @@ Nutze den Befehl `/setup`, um die Grundkonfiguration vorzunehmen. Du benötigst 
 *   `events-channel` (Pflicht): Der Kanal, in dem alle neuen Shared Events automatisch angekündigt werden.
 *   `creator-role` (Pflicht): Die Rolle auf deinem Server, die berechtigt ist, Shared Events zu verwalten (neben Administratoren).
 *   `language` (Optional): Die bevorzugte Sprache für Bot-Antworten auf diesem Server (z. B. `de` für Deutsch).
+
+### Einzelne Einstellungen anpassen
+Falls du später nur einzelne Teile der Konfiguration ändern möchtest, kannst du folgende Befehle nutzen:
+
+*   **`/event-channel set`**: Ändert den Kanal für Event-Ankündigungen.
+    *   `channel`: Der neue Zielkanal.
+*   **`/role set`**: Ändert die berechtigte Rolle für Event-Ersteller.
+    *   `type`: Wähle `event_creator`.
+    *   `role`: Die neue Rolle.
+*   **`/language server-locale`**: Ändert die Sprache des Bots für diesen Server.
+    *   `locale`: Wähle die gewünschte Sprache (z. B. `Deutsch` oder `English`).
 
 ---
 
@@ -49,7 +60,7 @@ Alle Event-Aktionen werden über den Hauptbefehl `/shared-event` gesteuert:
 
 Als Spieler kannst du einfach an Events teilnehmen, egal auf welchem Server sie ursprünglich erstellt wurden.
 
-*   **Beitreten:** Klicke auf das ✅-Emoji unter einer Event-Ankündigung.
+*   **Beitreten:** Klicke auf das ✅-Emoji unter einer Event-Ankündigung oder tritt direkt über das von Discord erstellte **Scheduled Event** bei.
 *   **Warteliste:** Sollte ein Event voll sein, wirst du automatisch auf die Warteliste gesetzt. Du rückst nach, sobald ein Platz frei wird.
 *   **Kanäle:** Sobald du einem Event beigetreten bist, erhältst du Zugriff auf die entsprechenden Event-Kanäle (Text/Voice), sofern diese eingerichtet wurden.
 *   **Erinnerungen:** Der Bot sendet dir kurz vor Start des Events eine Benachrichtigung.
@@ -60,9 +71,25 @@ Als Spieler kannst du einfach an Events teilnehmen, egal auf welchem Server sie 
 
 1.  **Erstellung:** Ein Ersteller nutzt `/shared-event create` auf einem beliebigen Server (meist Main-Server).
 2.  **Verteilung:** Der Bot sendet die Ankündigung sofort in die `events-channel` aller registrierten Sub-Server.
-3.  **Anmeldung:** Spieler auf allen Servern können via Reaktion (✅) teilnehmen. Die Teilnehmerliste wird global synchronisiert.
+3.  **Anmeldung:** Spieler auf allen Servern können via Reaktion (✅) oder über das integrierte Discord Event teilnehmen. Die Teilnehmerliste wird global synchronisiert.
 4.  **Vorbereitung:** Kurz vor dem Termin erhalten alle Teilnehmer eine Erinnerung.
 5.  **Durchführung:** Zum Startzeitpunkt wird das Event aktiv. Teilnehmer nutzen die bereitgestellten Kanäle.
 6.  **Abschluss:** Das Event wird beendet, Kanäle werden für die Teilnehmer wieder ausgeblendet.
+
+---
+
+## 🏆 Ranking & Warteliste
+
+GameMate nutzt ein Ranking-System, um die Zuverlässigkeit und das Engagement der Spieler zu fördern.
+
+### Ranking-Einfluss
+Das Ranking hat einen direkten Einfluss auf die **Warteliste**:
+*   Spieler mit einem höheren Ranking werden auf der Warteliste priorisiert.
+
+### Ranking Befehle
+Mit dem Befehl `/ranking` kannst du verschiedene Informationen abrufen:
+*   **`/ranking own`**: Zeigt dein eigenes aktuelles Ranking an.
+*   **`/ranking member`**: Zeigt das Ranking eines anderen Mitglieds (User-Auswahl erforderlich).
+*   **`/ranking shared-event`**: Zeigt eine Übersicht der Rankings aller Teilnehmer eines spezifischen Events (Event-ID erforderlich).
 
 🚀 Viel Erfolg bei deinem nächsten Event!

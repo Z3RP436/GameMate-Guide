@@ -118,7 +118,7 @@ Mit dem Befehl `/ranking` kannst du verschiedene Informationen abrufen:
 ## 📖 Glossar
 
 * **`Shared-Event`**: Ein Event, welches Nutzer serverübergreifend veranstalten.
-* **`Main-Server`**: Der Haupt-Server [GameMateHUB](hhtps://discord.gg/QKx2Y2kH5N). In den Sprach- und Textkanälen dieses Servers finden die Events statt. Hier erfährst du außerdem alle Neuigkeiten und kannst dich mit anderen Mitgliedern vernetzen!
+* **`Main-Server`**: Der Haupt-Server [GameMateHUB](https://discord.gg/QKx2Y2kH5N). In den Sprach- und Textkanälen dieses Servers finden die Events statt. Hier erfährst du außerdem alle Neuigkeiten und kannst dich mit anderen Mitgliedern vernetzen!
 * **`Sub-Server`**: Jeder Server der den GameMate Bot installiert ist ein Sub-Server. Er kann Events erstellen und seine Nutzer über geteilte Events von anderen Communitys informieren.
 * **`Administrator`**: Mit Administratoren sind immer die Administratoren der jeweiligen Sub-Server gemeint.
 

@@ -95,22 +95,31 @@ Mit dem Befehl `/ranking` kannst du verschiedene Informationen abrufen:
 ---
 
 ## 🔒 Berechtigungsmatrix
-| Befehl                    | Administrator | Event-Ersteller Rolle | Event-Besitzer | Spieler | Benötigte Parameter                                                                                                                               |
-| ------------------------- | :-----------: | :-------------------: | :------------: | :-----: |---------------------------------------------------------------------------------------------------------------------------------------------------|
-| `/setup`                  |       ✅       |           ❌           |        ❌       |    ❌    | `token`, `events-channel`, `creator-role`, `language` *(optional)*                                                                                |
-| `/event-channel set`      |       ✅       |           ❌           |        ❌       |    ❌    | `channel`                                                                                                                                         |
-| `/role set`               |       ✅       |           ❌           |        ❌       |    ❌    | `type`, `role`                                                                                                                                    |
-| `/language server-locale` |       ✅       |           ❌           |        ❌       |    ❌    | `locale`                                                                                                                                          |
-| `/language user-locale`   |       ✅       |           ✅           |        ✅       |    ✅    | `locale`                                                                                                                                          |
-| `/shared-event create`    |       ✅       |           ✅           |        ❌       |    ❌    | `name`, `description`, `date`, `time`, `member_limit` *(optional)*, `game` *(optional)*                                                           |
-| `/shared-event edit`      |       ❌       |           ❌           |        ✅       |    ❌    | `id`, `name` *(optional)*, `description` *(optional)*, `date` *(optional)*, `time` *(optional)*, `member_limit` *(optional)*, `game` *(optional)* |
-| `/shared-event remove`    |       ❌       |           ❌           |        ✅       |    ❌    | `id`                                                                                                                                              |
-| `/shared-event list`      |       ✅       |           ✅           |        ✅       |    ✅    | `-`                                                                                                                                               |
-| `/shared-event info`      |       ✅       |           ✅           |        ✅       |    ✅    | `id`                                                                                                                                              |
-| `/shared-event start`     |       ❌       |           ❌           |        ✅       |    ❌    | `id`                                                                                                                                              |
-| `/shared-event stop`      |       ❌       |           ❌           |        ✅       |    ❌    | `id`                                                                                                                                              |
-| `/ranking own`            |       ✅       |           ✅           |        ✅       |    ✅    | `–`                                                                                                                                                 |
-| `/ranking member`         |       ✅       |           ✅           |        ✅       |    ✅    | `member`                                                                                                                                          |
-| `/ranking shared-event`   |       ✅       |           ✅           |        ✅       |    ✅    | `id`                                                                                                                                              |
+| Befehl                    | Admin | Event-Ersteller Rolle | Event-Besitzer | Spieler | Parameter                                                                                                                                         |
+|---------------------------|:-----:|:---------------------:|:--------------:|:-------:|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/setup`                  |   ✅   |           ❌           |       ❌        |    ❌    | `token`, `events-channel`, `creator-role`, `language` *(optional)*                                                                                |
+| `/event-channel set`      |   ✅   |           ❌           |       ❌        |    ❌    | `channel`                                                                                                                                         |
+| `/role set`               |   ✅   |           ❌           |       ❌        |    ❌    | `type`, `role`                                                                                                                                    |
+| `/language server-locale` |   ✅   |           ❌           |       ❌        |    ❌    | `locale`                                                                                                                                          |
+| `/language user-locale`   |   ✅   |           ✅           |       ✅        |    ✅    | `locale`                                                                                                                                          |
+| `/shared-event create`    |   ✅   |           ✅           |       ❌        |    ❌    | `name`, `description`, `date`, `time`, `member_limit` *(optional)*, `game` *(optional)*                                                           |
+| `/shared-event edit`      |   ❌   |           ❌           |       ✅        |    ❌    | `id`, `name` *(optional)*, `description` *(optional)*, `date` *(optional)*, `time` *(optional)*, `member_limit` *(optional)*, `game` *(optional)* |
+| `/shared-event remove`    |   ❌   |           ❌           |       ✅        |    ❌    | `id`                                                                                                                                              |
+| `/shared-event list`      |   ✅   |           ✅           |       ✅        |    ✅    | `-`                                                                                                                                               |
+| `/shared-event info`      |   ✅   |           ✅           |       ✅        |    ✅    | `id`                                                                                                                                              |
+| `/shared-event start`     |   ❌   |           ❌           |       ✅        |    ❌    | `id`                                                                                                                                              |
+| `/shared-event stop`      |   ❌   |           ❌           |       ✅        |    ❌    | `id`                                                                                                                                              |
+| `/ranking own`            |   ✅   |           ✅           |       ✅        |    ✅    | `–`                                                                                                                                               |
+| `/ranking member`         |   ❌   |           ❌           |       ❌        |    ❌    | `member`                                                                                                                                          |
+| `/ranking shared-event`   |   ❌   |           ❌           |       ✅        |    ❌    | `id`                                                                                                                                              |
+
+---
+
+## 📖 Glossar
+
+* **`Shared-Event`**: Ein Event, welches Nutzer serverübergreifend veranstalten.
+* **`Main-Server`**: Der Haupt-Server [GameMateHUB](hhtps://discord.gg/QKx2Y2kH5N). In den Sprach- und Textkanälen dieses Servers finden die Events statt. Hier erfährst du außerdem alle Neuigkeiten und kannst dich mit anderen Mitgliedern vernetzen!
+* **`Sub-Server`**: Jeder Server der den GameMate Bot installiert ist ein Sub-Server. Er kann Events erstellen und seine Nutzer über geteilte Events von anderen Communitys informieren.
+* **`Administrator`**: Mit Administratoren sind immer die Administratoren der jeweiligen Sub-Server gemeint.
 
 🚀 Viel Erfolg bei deinem nächsten Event!

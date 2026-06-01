@@ -92,4 +92,25 @@ Mit dem Befehl `/ranking` kannst du verschiedene Informationen abrufen:
 *   **`/ranking member`**: Zeigt das Ranking eines anderen Mitglieds (User-Auswahl erforderlich).
 *   **`/ranking shared-event`**: Zeigt eine Übersicht der Rankings aller Teilnehmer eines spezifischen Events (Event-ID erforderlich).
 
+---
+
+## 🔒 Berechtigungsmatrix
+| Befehl                    | Administrator | Event-Ersteller Rolle | Event-Besitzer | Spieler | Benötigte Parameter                                                                                                                               |
+| ------------------------- | :-----------: | :-------------------: | :------------: | :-----: |---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/setup`                  |       ✅       |           ❌           |        ❌       |    ❌    | `token`, `events-channel`, `creator-role`, `language` *(optional)*                                                                                |
+| `/event-channel set`      |       ✅       |           ❌           |        ❌       |    ❌    | `channel`                                                                                                                                         |
+| `/role set`               |       ✅       |           ❌           |        ❌       |    ❌    | `type`, `role`                                                                                                                                    |
+| `/language server-locale` |       ✅       |           ❌           |        ❌       |    ❌    | `locale`                                                                                                                                          |
+| `/language user-locale`   |       ✅       |           ✅           |        ✅       |    ✅    | `locale`                                                                                                                                          |
+| `/shared-event create`    |       ✅       |           ✅           |        ❌       |    ❌    | `name`, `description`, `date`, `time`, `member_limit` *(optional)*, `game` *(optional)*                                                           |
+| `/shared-event edit`      |       ❌       |           ❌           |        ✅       |    ❌    | `id`, `name` *(optional)*, `description` *(optional)*, `date` *(optional)*, `time` *(optional)*, `member_limit` *(optional)*, `game` *(optional)* |
+| `/shared-event remove`    |       ❌       |           ❌           |        ✅       |    ❌    | `id`                                                                                                                                              |
+| `/shared-event list`      |       ✅       |           ✅           |        ✅       |    ✅    | `-`                                                                                                                                               |
+| `/shared-event info`      |       ✅       |           ✅           |        ✅       |    ✅    | `id`                                                                                                                                              |
+| `/shared-event start`     |       ❌       |           ❌           |        ✅       |    ❌    | `id`                                                                                                                                              |
+| `/shared-event stop`      |       ❌       |           ❌           |        ✅       |    ❌    | `id`                                                                                                                                              |
+| `/ranking own`            |       ✅       |           ✅           |        ✅       |    ✅    | `–`                                                                                                                                                 |
+| `/ranking member`         |       ✅       |           ✅           |        ✅       |    ✅    | `member`                                                                                                                                          |
+| `/ranking shared-event`   |       ✅       |           ✅           |        ✅       |    ✅    | `id`                                                                                                                                              |
+
 🚀 Viel Erfolg bei deinem nächsten Event!
